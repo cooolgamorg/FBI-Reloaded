@@ -85,13 +85,12 @@ static void titles_action_update(ui_view* view, void* data, linked_list* items, 
         if(!info->twl) {
             linked_list_add(items, &extract_smdh);
 
-            if(info->mediaType != MEDIATYPE_GAME_CARD) {
-                linked_list_add(items, &import_seed);
+            if(info->mediaType != MEDIATYPE_NAND) {
+                linked_list_add(items, &browse_save_data);
             }
 
-            linked_list_add(items, &browse_save_data);
-
-            if(info->mediaType != MEDIATYPE_GAME_CARD) {
+            if(info->mediaType != MEDIATYPE_GAME_CARD && info->mediaType != MEDIATYPE_NAND) {
+                linked_list_add(items, &import_seed);
                 linked_list_add(items, &import_secure_value);
                 linked_list_add(items, &export_secure_value);
                 linked_list_add(items, &delete_secure_value);
